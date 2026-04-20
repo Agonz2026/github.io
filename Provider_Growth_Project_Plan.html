@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Provider Growth Project Plan — Gonzalez & Associates</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal: #0F6E56;
+  --teal-light: #1D9E75;
+  --teal-pale: #E1F5EE;
+  --teal-mid: #5DCAA5;
+  --blue: #185FA5;
+  --blue-light: #378ADD;
+  --blue-pale: #E6F1FB;
+  --amber: #854F0B;
+  --amber-pale: #FAEEDA;
+  --amber-mid: #EF9F27;
+  --ink: #1A1A18;
+  --ink-secondary: #3D3D3A;
+  --ink-muted: #6E6E69;
+  --ink-faint: #9A9A94;
+  --rule: #E2E0D8;
+  --surface: #F8F7F3;
+  --white: #FFFFFF;
+  --platinum-bg: #F0ECE4;
+  --platinum-border: #C9B99A;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--white);
+  width: 1100px;
+  margin: 0 auto;
+  padding: 64px 80px 80px;
+}
+
+/* ── TYPOGRAPHY ── */
+h1 { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 600; color: var(--ink); line-height: 1.15; letter-spacing: -0.01em; }
+h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.005em; }
+h3 { font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 10px; }
+p { color: var(--ink-secondary); line-height: 1.65; }
+
+/* ── PAGE HEADER ── */
+.page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 40px;
+}
+.firm-name {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+.doc-meta {
+  text-align: right;
+}
+.doc-meta-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+.doc-meta-value { font-size: 12px; font-weight: 500; color: var(--ink-secondary); margin-top: 2px; }
+
+/* ── SECTION DIVIDER ── */
+.section { margin-bottom: 48px; }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.section-number {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--teal-light);
+  border: 1px solid var(--teal-light);
+  border-radius: 3px;
+  padding: 2px 7px;
+  flex-shrink: 0;
+}
+.section-rule { flex: 1; height: 1px; background: var(--rule); }
+
+/* ── OBJECTIVE BAR ── */
+.objective-bar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.obj-cell {
+  background: var(--white);
+  padding: 16px 18px;
+}
+.obj-cell.accent { background: var(--teal); }
+.obj-cell.accent .obj-label { color: rgba(255,255,255,0.6); }
+.obj-cell.accent .obj-value { color: #fff; }
+.obj-cell.accent .obj-sub { color: rgba(255,255,255,0.55); }
+.obj-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; }
+.obj-value { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--teal); line-height: 1; }
+.obj-sub { font-size: 11px; color: var(--ink-muted); margin-top: 3px; }
+
+/* ── TIMELINE RAIL ── */
+.timeline {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.month-card {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.month-head {
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.month-head.m1 { background: var(--teal); }
+.month-head.m2 { background: #0D5A45; }
+.month-head.m3 { background: #0A4434; }
+.month-title { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; }
+.month-focus { font-size: 10px; color: rgba(255,255,255,0.65); }
+.month-body { padding: 14px 16px; background: var(--white); }
+
+.track-tasks { display: flex; flex-direction: column; gap: 10px; }
+.track-group { }
+.track-group-label {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 5px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--rule);
+}
+.task-list { display: flex; flex-direction: column; gap: 4px; }
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 11.5px;
+  color: var(--ink-secondary);
+  line-height: 1.4;
+}
+.task-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+.dot-teal { background: var(--teal-light); }
+.dot-blue { background: var(--blue-light); }
+
+/* ── TWO-TRACK DEEP DIVE ── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; }
+
+.track-box {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+.track-box-head {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.track-box-head.teal { background: var(--teal); }
+.track-box-head.blue { background: var(--blue); }
+.track-box-title { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; }
+.track-box-badge {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+.badge-teal { background: rgba(255,255,255,0.2); color: #fff; }
+.badge-blue { background: rgba(255,255,255,0.2); color: #fff; }
+
+.track-box-body { padding: 16px 18px; background: var(--white); display: flex; flex-direction: column; gap: 14px; }
+
+.pitch-block {
+  background: var(--teal-pale);
+  border-left: 3px solid var(--teal-light);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 12px;
+}
+.pitch-block.blue-block {
+  background: var(--blue-pale);
+  border-color: var(--blue-light);
+}
+.pitch-title { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; }
+.pitch-title.blue { color: var(--blue); }
+.pitch-body { font-size: 11.5px; color: var(--ink-secondary); line-height: 1.5; }
+
+/* 1-3-7 sequence */
+.sequence { display: flex; flex-direction: column; gap: 8px; }
+.seq-item { display: flex; align-items: flex-start; gap: 10px; }
+.seq-day {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--teal);
+  background: var(--teal-pale);
+  border: 1px solid rgba(29,158,117,0.25);
+  border-radius: 4px;
+  padding: 3px 7px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  min-width: 42px;
+  text-align: center;
+}
+.seq-day.blue { color: var(--blue); background: var(--blue-pale); border-color: rgba(55,138,221,0.25); }
+.seq-text { font-size: 11.5px; color: var(--ink-secondary); line-height: 1.45; }
+.seq-text strong { font-weight: 600; color: var(--ink); }
+
+/* ── TIERING TABLE ── */
+.tier-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+.tier-table th {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: left;
+  padding: 8px 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--rule);
+}
+.tier-table td {
+  font-size: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  color: var(--ink-secondary);
+  line-height: 1.45;
+}
+.tier-table tr:last-child td { border-bottom: none; }
+.tier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.tier-p { background: #F5EDD8; color: #7A5C1E; border: 1px solid #D4AA6A; }
+.tier-g { background: #E8F0F8; color: #1A4A80; border: 1px solid #90B8E0; }
+.tier-s { background: #F0EFE8; color: #5A5A50; border: 1px solid #C8C5B8; }
+.tier-dot { width: 6px; height: 6px; border-radius: 50%; }
+.dot-gold { background: #C9943A; }
+.dot-blue2 { background: #378ADD; }
+.dot-silver { background: #9A9A90; }
+
+/* ── OPERATIONAL PILLARS ── */
+.pillars { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+.pillar-card {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.pillar-head {
+  padding: 10px 14px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pillar-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--teal-light);
+}
+.pillar-name { font-size: 12px; font-weight: 600; color: var(--ink); }
+.pillar-body { padding: 12px 14px; background: var(--white); }
+.pillar-items { display: flex; flex-direction: column; gap: 7px; }
+.pillar-item { display: flex; align-items: flex-start; gap: 7px; font-size: 11.5px; color: var(--ink-secondary); line-height: 1.4; }
+.pillar-arrow { color: var(--teal-light); font-size: 11px; flex-shrink: 0; margin-top: 1px; }
+
+/* ── KPI DASHBOARD ── */
+.kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+.kpi-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.kpi-category { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
+.kpi-items { display: flex; flex-direction: column; gap: 8px; }
+.kpi-item { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.kpi-name { font-size: 11.5px; color: var(--ink-secondary); }
+.kpi-target {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--teal);
+  background: var(--teal-pale);
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.kpi-target.amber { color: var(--amber); background: var(--amber-pale); }
+.kpi-target.blue { color: var(--blue); background: var(--blue-pale); }
+
+/* ── LAWMATICS / CRM BLOCK ── */
+.crm-block {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.crm-col-title { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 10px; }
+.alert-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  margin-bottom: 7px;
+}
+.alert-icon { font-size: 12px; flex-shrink: 0; }
+.alert-text { font-size: 11.5px; color: var(--ink-secondary); line-height: 1.4; }
+.alert-text strong { font-weight: 600; color: var(--ink); }
+
+/* ── FOOTER ── */
+.doc-footer {
+  margin-top: 56px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-firm { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
+.footer-conf { font-size: 10px; color: var(--ink-faint); font-style: italic; }
+
+/* ── PRINT ── */
+@media print {
+  body { width: 100%; padding: 40px; }
+  .section { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div>
+    <div class="firm-name">Gonzalez &amp; Associates, LLC</div>
+    <h1>Provider Growth<br>Project Plan</h1>
+  </div>
+  <div class="doc-meta">
+    <div class="doc-meta-label">Plan Period</div>
+    <div class="doc-meta-value">Q2–Q3 2026 · 90 Days</div>
+    <div style="margin-top: 10px;">
+      <div class="doc-meta-label">Practice Area</div>
+      <div class="doc-meta-value">PIP / Personal Injury Outreach</div>
+    </div>
+    <div style="margin-top: 10px;">
+      <div class="doc-meta-label">Version</div>
+      <div class="doc-meta-value">1.0 · Internal Use</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SECTION 1: OBJECTIVES -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-number">01</div>
+    <h2>Plan Objectives &amp; Targets</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="objective-bar">
+    <div class="obj-cell">
+      <div class="obj-label">Annual Baseline</div>
+      <div class="obj-value" style="color: var(--ink);">~500</div>
+      <div class="obj-sub">cases / year (est.)</div>
+    </div>
+    <div class="obj-cell">
+      <div class="obj-label">Top 9 Providers</div>
+      <div class="obj-value" style="color: var(--ink);">318</div>
+      <div class="obj-sub">confirmed cases</div>
+    </div>
+    <div class="obj-cell accent">
+      <div class="obj-label">10% Annual Target</div>
+      <div class="obj-value">+13</div>
+      <div class="obj-sub">cases this quarter (~4–5/mo)</div>
+    </div>
+    <div class="obj-cell">
+      <div class="obj-label">Track 1 Share (70%)</div>
+      <div class="obj-value" style="color: var(--teal);">+9</div>
+      <div class="obj-sub">existing providers</div>
+    </div>
+    <div class="obj-cell">
+      <div class="obj-label">Track 2 Share (30%)</div>
+      <div class="obj-value" style="color: var(--blue);">+4</div>
+      <div class="obj-sub">new chiropractors</div>
+    </div>
+  </div>
+
+  <p style="font-size: 12px; color: var(--ink-muted); line-height: 1.6; max-width: 780px;">
+    This plan translates the firm's 10% annual case growth goal into a concrete 90-day execution framework across two parallel tracks. Track 1 focuses on deepening relationships with the existing provider base using a tiering model. Track 2 launches structured outreach to new chiropractic offices using a tech-forward value pitch and a mandatory 1-3-7 follow-up sequence.
+  </p>
+</div>
+
+
+<!-- SECTION 2: 90-DAY TIMELINE -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-number">02</div>
+    <h2>Month-by-Month Execution Timeline</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="timeline">
+    <!-- MONTH 1 -->
+    <div class="month-card">
+      <div class="month-head m1">
+        <div class="month-title">Month 1 — Foundation</div>
+        <div class="month-focus">Build &amp; Launch</div>
+      </div>
+      <div class="month-body">
+        <div class="track-tasks">
+          <div class="track-group">
+            <div class="track-group-label">Track 1 · Existing Providers</div>
+            <div class="task-list">
+              <div class="task-item"><div class="task-dot dot-teal"></div>Tier all active providers into Platinum / Gold / Silver</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Assign each Tier 1 provider a dedicated case manager point of contact</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Set up monthly Referral Report template in Lawmatics</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Identify Tier 3 (dormant) offices for re-engagement newsletter drop</div>
+            </div>
+          </div>
+          <div class="track-group" style="margin-top:10px;">
+            <div class="track-group-label">Track 2 · New Chiropractors</div>
+            <div class="task-list">
+              <div class="task-item"><div class="task-dot dot-blue"></div>Build target list of 20–30 chiropractic offices by market (Miami / Orlando)</div>
+              <div class="task-item"><div class="task-dot dot-blue"></div>Finalize "Recovery Roadmap" one-pager and "First File Kit" packet</div>
+              <div class="task-item"><div class="task-dot dot-blue"></div>Send brand welcome video to all new contacts via Day 1 follow-up email</div>
+              <div class="task-item"><div class="task-dot dot-blue"></div>Begin 10–15 in-person visits/week — log all contacts in Lawmatics</div>
+              <div class="task-item"><div class="task-dot dot-blue"></div>Pitch "PIP Portfolio Audit" to any office with billing frustrations</div>
+            </div>
+          </div>
+          <div class="track-group" style="margin-top:10px;">
+            <div class="track-group-label">Operations</div>
+            <div class="task-list">
+              <div class="task-item"><div class="task-dot dot-teal"></div>Configure Lawmatics CRM: "Next Action" date field, 30-day inactivity alert</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Assign territory / provider lists to each Case Manager Assistant</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Define bonus criteria: New Provider Activation + Referral Volume Stability</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MONTH 2 -->
+    <div class="month-card">
+      <div class="month-head m2">
+        <div class="month-title">Month 2 — Activation</div>
+        <div class="month-focus">Convert &amp; Deepen</div>
+      </div>
+      <div class="month-body">
+        <div class="track-tasks">
+          <div class="track-group">
+            <div class="track-group-label">Track 1 · Existing Providers</div>
+            <div class="task-list">
+              <div class="task-item"><div class="task-dot dot-teal"></div>Send first monthly Referral Status Reports via Lawmatics to all active providers</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Quarterly check-in on all Tier 2 (Gold) accounts</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Schedule Tier 2 quarterly lunch and check-in</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Deploy "Win Notification" — send Success Alerts for any settled PIP cases</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Review referral volume by provider; flag underperforming Tier 1s</div>
+            </div>
+          </div>
+          <div class="track-group" style="margin-top:10px;">
+            <div class="track-group-label">Track 2 · New Chiropractors</div>
+            <div class="task-list">
+              <div class="task-item"><div class="task-dot dot-blue"></div>Execute 1-3-7 follow-up sequence on all Month 1 contacts</div>
+              <div class="task-item"><div class="task-dot dot-blue"></div>Conduct "Quick Audit" calls — review one pending/denied bill with interested offices</div>
+              <div class="task-item"><div class="task-dot dot-blue"></div>Push for first case from at least 2 new offices</div>
+              <div class="task-item"><div class="task-dot dot-blue"></div>Flag any office that hasn't engaged after 21 days — shift strategy</div>
+              <div class="task-item"><div class="task-dot dot-blue"></div>Continue 10–15 new visits/week for fresh prospect pipeline</div>
+            </div>
+          </div>
+          <div class="track-group" style="margin-top:10px;">
+            <div class="track-group-label">Operations</div>
+            <div class="task-list">
+              <div class="task-item"><div class="task-dot dot-teal"></div>Host first Quarterly Webinar (20 min) on current Florida PIP statute updates</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Offer front-desk BI/PI intake training to at least 2 Tier 1 offices</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Mid-quarter KPI review with outreach team — verify face-to-face meeting pace</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MONTH 3 -->
+    <div class="month-card">
+      <div class="month-head m3">
+        <div class="month-title">Month 3 — Consolidation</div>
+        <div class="month-focus">Retain &amp; Scale</div>
+      </div>
+      <div class="month-body">
+        <div class="track-tasks">
+          <div class="track-group">
+            <div class="track-group-label">Track 1 · Existing Providers</div>
+            <div class="task-list">
+              <div class="task-item"><div class="task-dot dot-teal"></div>Issue Quarterly "Financial Recovery Report" to all Platinum accounts</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Re-tier any providers who have shifted in referral volume</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Focus resources on top performers — increase visit frequency for Tier 1</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Evaluate "Stickiness" — identify providers with 3+ cases in last 60 days</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Document relationship health for each Tier 1 for next-quarter planning</div>
+            </div>
+          </div>
+          <div class="track-group" style="margin-top:10px;">
+            <div class="track-group-label">Track 2 · New Chiropractors</div>
+            <div class="task-list">
+              <div class="task-item"><div class="task-dot dot-blue"></div>Focus follow-up exclusively on responsive offices (sent ≥1 case)</div>
+              <div class="task-item"><div class="task-dot dot-blue"></div>Goal: convert 2–3 offices to consistent monthly senders</div>
+              <div class="task-item"><div class="task-dot dot-blue"></div>Promote active new offices to Tier 2 (Gold) in the tiering model</div>
+              <div class="task-item"><div class="task-dot dot-blue"></div>Compile outreach conversion data for next-quarter prospect list</div>
+            </div>
+          </div>
+          <div class="track-group" style="margin-top:10px;">
+            <div class="track-group-label">Operations</div>
+            <div class="task-list">
+              <div class="task-item"><div class="task-dot dot-teal"></div>90-day performance review: case volume, face-to-face meetings, audit requests</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Assess "Days to First Case" for all new providers activated in Month 1–2</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Update territory assignments and CMA bonuses based on activation data</div>
+              <div class="task-item"><div class="task-dot dot-teal"></div>Build Q3/Q4 growth plan using this quarter's conversion benchmarks</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SECTION 3: TRACK DEEP DIVES -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-number">03</div>
+    <h2>Track Strategy Detail</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="two-col">
+    <!-- TRACK 1 -->
+    <div class="track-box">
+      <div class="track-box-head teal">
+        <div class="track-box-title">Track 1 · New Provider Outreach</div>
+        <div class="track-box-badge badge-teal">Tactical Expansion</div>
+      </div>
+      <div class="track-box-body">
+
+        <div class="pitch-block">
+          <div class="pitch-title">The Tech-Forward Value Hook</div>
+          <div class="pitch-body">Lead with a <strong>"PIP Portfolio Audit"</strong> — show providers they may be leaving statutory interest uncollected. Use the firm's Python-based interest calculator as the demonstration tool. This positions G&amp;A as a sophisticated financial partner, not just another law firm asking for referrals.</div>
+        </div>
+
+        <div>
+          <h3 style="margin-bottom: 8px;">Collateral Required</h3>
+          <div class="task-list">
+            <div class="task-item"><div class="task-dot dot-teal"></div><strong>"Recovery Roadmap"</strong> one-pager — file journey from provider office through Neos/Lawmatics to recovery</div>
+            <div class="task-item"><div class="task-dot dot-teal"></div><strong>"First File Kit"</strong> — referral form, HIPAA release, intake instructions, business card</div>
+            <div class="task-item"><div class="task-dot dot-teal"></div><strong>Brand welcome video</strong> — existing firm video, linked in Day 1 follow-up email</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="margin-bottom: 8px;">Mandatory 1-3-7 Follow-Up Sequence</h3>
+          <div class="sequence">
+            <div class="seq-item">
+              <div class="seq-day">Day 1</div>
+              <div class="seq-text"><strong>Thank You Email</strong> — digital business card + link to firm brand video</div>
+            </div>
+            <div class="seq-item">
+              <div class="seq-day">Day 3</div>
+              <div class="seq-text"><strong>First File Kit Drop-off</strong> — physical folder with everything needed to send the first case</div>
+            </div>
+            <div class="seq-item">
+              <div class="seq-day">Day 7</div>
+              <div class="seq-text"><strong>Phone Call</strong> — schedule a "Quick Audit" of one pending or denied bill to demonstrate PIP recovery process</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pitch-block" style="background: #FFF8ED; border-color: var(--amber-mid);">
+          <div class="pitch-title" style="color: var(--amber);">21-Day Rule</div>
+          <div class="pitch-body">If a new provider has not sent a case within 21 days of first visit, the engagement strategy for that office must shift. Escalate to an attorney-level introduction or pivot to a different contact within the practice.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TRACK 2 -->
+    <div class="track-box">
+      <div class="track-box-head blue">
+        <div class="track-box-title">Track 2 · Existing Provider Growth</div>
+        <div class="track-box-badge badge-blue">Tiering Strategy</div>
+      </div>
+      <div class="track-box-body">
+
+        <div>
+          <h3 style="margin-bottom: 8px;">Provider Tiering Model</h3>
+          <table class="tier-table">
+            <thead>
+              <tr>
+                <th>Tier</th>
+                <th>Criteria</th>
+                <th>Action Plan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tier-badge tier-p"><span class="tier-dot dot-gold"></span>Platinum</span></td>
+                <td>5+ cases / month (consistent)</td>
+                <td>Quarterly Financial Recovery Report showing interest collected · Personal attorney touchpoint</td>
+              </tr>
+              <tr>
+                <td><span class="tier-badge tier-g"><span class="tier-dot dot-blue2"></span>Gold</span></td>
+                <td>1–3 cases / month</td>
+                <td>Quarterly lunch · Quarterly check-in · "Lunch &amp; Learn" for billing staff</td>
+              </tr>
+              <tr>
+                <td><span class="tier-badge tier-s"><span class="tier-dot dot-silver"></span>Silver</span></td>
+                <td>Dormant or inconsistent</td>
+                <td>Monthly "Legal Update" newsletter · Periodic drop-in visits to re-verify contacts</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pitch-block blue-block">
+          <div class="pitch-title blue">Closed-Loop Feedback System</div>
+          <div class="pitch-body">Providers stop referring when cases feel like a "black hole." Combat this with two automatic touchpoints: a <strong>Monthly Referral Report</strong> (Lawmatics — every PI case status) and a <strong>"Win" Success Alert</strong> sent immediately when a PIP suit settles. Celebrate recoveries to keep G&amp;A top-of-mind.</div>
+        </div>
+
+        <div>
+          <h3 style="margin-bottom: 8px;">Staff Training as a Retention Tool</h3>
+          <div class="task-list">
+            <div class="task-item"><div class="task-dot dot-blue"></div>Train front-desk staff to identify a Bodily Injury (PI) case vs. standard PIP intake — turns their staff into case scouts</div>
+            <div class="task-item"><div class="task-dot dot-blue"></div>Offer as a complimentary service — positions firm as "Compliance Partner," not just vendor</div>
+            <div class="task-item"><div class="task-dot dot-blue"></div>Host quarterly Zoom briefings (20 min) on Florida PIP statute changes affecting provider billing</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SECTION 4: OPERATIONAL PILLARS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-number">04</div>
+    <h2>Operational Infrastructure</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar-card">
+      <div class="pillar-head">
+        <div class="pillar-num">P1</div>
+        <div class="pillar-name">Marketing Command Center</div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-items">
+          <div class="pillar-item"><div class="pillar-arrow">→</div>All visits logged in Lawmatics with "Next Action" date — no exceptions</div>
+          <div class="pillar-item"><div class="pillar-arrow">→</div>Automated alert triggers if provider not visited in 30 days</div>
+          <div class="pillar-item"><div class="pillar-arrow">→</div>KPI dashboard: track "Days to First Case" per new provider</div>
+          <div class="pillar-item"><div class="pillar-arrow">→</div>Weekly CRM audit by outreach lead — verify all fields complete</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-head">
+        <div class="pillar-num">P2</div>
+        <div class="pillar-name">Education as a Service (EaaS)</div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-items">
+          <div class="pillar-item"><div class="pillar-arrow">→</div>Quarterly Zoom briefings on Florida PIP statute changes (20 min)</div>
+          <div class="pillar-item"><div class="pillar-arrow">→</div>Front-desk PI/BI intake training offered to all Tier 1–2 offices</div>
+          <div class="pillar-item"><div class="pillar-arrow">→</div>Firm positioned as "Compliance Partner" — not just legal vendor</div>
+          <div class="pillar-item"><div class="pillar-arrow">→</div>Training sessions double as relationship-building touchpoints</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-head">
+        <div class="pillar-num">P3</div>
+        <div class="pillar-name">Team Incentive Alignment</div>
+      </div>
+      <div class="pillar-body">
+        <div class="pillar-items">
+          <div class="pillar-item"><div class="pillar-arrow">→</div>Assign specific territories and provider lists to each CMA</div>
+          <div class="pillar-item"><div class="pillar-arrow">→</div>Admin bonuses linked to New Provider Activation (not only settlements)</div>
+          <div class="pillar-item"><div class="pillar-arrow">→</div>Referral Volume Stability tracked as separate bonus metric</div>
+          <div class="pillar-item"><div class="pillar-arrow">→</div>Monthly team review of territory performance against targets</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="crm-block">
+    <div>
+      <div class="crm-col-title">Lawmatics CRM — Required Tracking Fields</div>
+      <div class="alert-item">
+        <div class="alert-icon">📋</div>
+        <div class="alert-text">Office name · Specialty · Address · Visit date · Representative · Person met &amp; role · Current counsel (if any)</div>
+      </div>
+      <div class="alert-item">
+        <div class="alert-icon">📋</div>
+        <div class="alert-text">Provider claim interest · Patient referral interest · Follow-up date · Notes from visit</div>
+      </div>
+      <div class="alert-item" style="border-color: rgba(29,158,117,0.3); background: var(--teal-pale);">
+        <div class="alert-icon">⚡</div>
+        <div class="alert-text"><strong>Automated Alerts:</strong> 30-day no-visit trigger · 21-day no-case-sent trigger for new providers</div>
+      </div>
+    </div>
+    <div>
+      <div class="crm-col-title">Discovery Questions — Field Standard</div>
+      <div class="alert-item">
+        <div class="alert-icon">💬</div>
+        <div class="alert-text"><strong>Provider side:</strong> "How are you handling underpaid or denied PIP bills?" · "Do you have a firm helping now?"</div>
+      </div>
+      <div class="alert-item">
+        <div class="alert-icon">💬</div>
+        <div class="alert-text"><strong>Patient referral:</strong> "Do patients ever ask for attorney recommendations?" · "What do you do when a patient needs legal help?"</div>
+      </div>
+      <div class="alert-item">
+        <div class="alert-icon">💬</div>
+        <div class="alert-text"><strong>Qualify:</strong> "Who makes decisions about outside legal partnerships?" · "Can I schedule a short intro with your billing manager?"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SECTION 5: KPIs -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-number">05</div>
+    <h2>Success Metrics &amp; KPI Targets</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-category">Activity Metrics (Weekly)</div>
+      <div class="kpi-items">
+        <div class="kpi-item">
+          <div class="kpi-name">Face-to-face meetings</div>
+          <div class="kpi-target">10+ / week</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-name">New offices contacted</div>
+          <div class="kpi-target">5+ / week</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-name">Decision-makers reached</div>
+          <div class="kpi-target">Track all</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-name">Follow-up sequences started</div>
+          <div class="kpi-target">100%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-category">Conversion Metrics</div>
+      <div class="kpi-items">
+        <div class="kpi-item">
+          <div class="kpi-name">Days to first case (new provider)</div>
+          <div class="kpi-target amber">≤21 days</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-name">Audit requests accepted</div>
+          <div class="kpi-target">Track &amp; grow</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-name">New providers activated (Q)</div>
+          <div class="kpi-target">2–3 offices</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-name">Case volume quarterly target</div>
+          <div class="kpi-target">+13 cases</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-category">Relationship Health (Leading)</div>
+      <div class="kpi-items">
+        <div class="kpi-item">
+          <div class="kpi-name">"Stickiness" — 3+ cases / 60 days</div>
+          <div class="kpi-target blue">% of active base</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-name">Providers with open "Next Action"</div>
+          <div class="kpi-target blue">100% in CRM</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-name">Referral reports sent monthly</div>
+          <div class="kpi-target blue">All active</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-name">30-day no-contact alerts fired</div>
+          <div class="kpi-target amber">Zero tolerance</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div class="footer-firm">Gonzalez &amp; Associates, LLC · Provider Growth Plan · Q2–Q3 2026</div>
+  <div class="footer-conf">Internal Use Only — Confidential</div>
+</div>
+
+</body>
+</html>
